@@ -33,6 +33,30 @@ const Disc = ({ size, topDisc, startDrag }) => {
   );
 }
 
+const Tower = ({ towerDiscs, maxSize, startTopDiscDrag, dropDisc }) => {
+  const towerStyle = { width: (maxSize + 3) * 25 };
+  const pillarStyle = { height: 100 + maxSize * 20 };
+
+  return (
+    <div
+      className='tower'
+      style={towerStyle}
+    >
+      <div className='tower-pillar' style={pillarStyle} />
+      <div className='tower-base' />
+      <div className='disc-group'>
+        {towerDiscs.map((size, i) =>
+          <Disc
+            key={size.toString()}
+            size={size}
+            topDisc={i === 0}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
 class Towers extends React.Component {
   constructor(props) {
     super(props);
