@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import _ from 'lodash';
+import React from 'react';
+import './style.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const TOWERS_NUMBER = 3;
+
+class Towers extends React.Component {
+  constructor(props) {
+    super(props);
+    let startTower = _.range(1, this.props.discsNumber + 1);
+    let discs = _.map(Array(TOWERS_NUMBER), (val, i) =>
+      i === 0 ? startTower : []
+    );
+    this.state = { discs };
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.discs.map((towerDiscs, i) =>
+          <Tower
+            key={i + 1}
+            towerDiscs={towerDiscs}
+            maxSize={this.props.discsNumber}
+            startTopDiscDrag={() => this.startTopDiscDrag(i)}
+            dropDisc={() => this.dropDisc(i)}
+          />
+        )}
+      </div>
+    );
+  }
 }
+
+const App = () => (
+  <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: window.innerHeight, width: '100%', backgroundColor: 'darkblue'}}>
+    <Towers discsNumber={7} />
+  </div>
+);
 
 export default App;
