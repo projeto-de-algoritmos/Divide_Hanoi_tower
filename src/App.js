@@ -1,61 +1,9 @@
 import _ from 'lodash';
 import React from 'react';
 import './style.css';
+import Tower from './components/Tower';
 
 const TOWERS_NUMBER = 3;
-const discColours = [
-  'gray',
-  'red',
-  'green',
-  'cyan',
-  'yellow',
-  'orange',
-  'magenta',
-  'blue',
-];
-
-const Disc = ({ size, topDisc, startDrag }) => {
-  const discWidth = (size + 1.5) * 25;
-  const discStyle = {
-    width: discWidth + 'px',
-    backgroundColor: discColours[size % 8],
-  };
-
-  return (
-    <div
-      className='disc'
-      style={discStyle}
-    >
-      <span className='disc-label'>
-        {size}
-      </span>
-    </div>
-  );
-}
-
-const Tower = ({ towerDiscs, maxSize, startTopDiscDrag, dropDisc }) => {
-  const towerStyle = { width: (maxSize + 3) * 25 };
-  const pillarStyle = { height: 100 + maxSize * 20 };
-
-  return (
-    <div
-      className='tower'
-      style={towerStyle}
-    >
-      <div className='tower-pillar' style={pillarStyle} />
-      <div className='tower-base' />
-      <div className='disc-group'>
-        {towerDiscs.map((size, i) =>
-          <Disc
-            key={size.toString()}
-            size={size}
-            topDisc={i === 0}
-          />
-        )}
-      </div>
-    </div>
-  );
-};
 
 class Towers extends React.Component {
   constructor(props) {
@@ -65,6 +13,26 @@ class Towers extends React.Component {
       i === 0 ? startTower : []
     );
     this.state = { discs };
+  }
+
+  startTopDiscDrag(activeTower) {
+    this.activeTower = activeTower;
+  }
+
+  dropDisc(destTower) {
+    const sourceTower = this.activeTower;
+    this.activeTower = null;
+    if (sourceTower === destTower || sourceTower === null) return;
+
+    this.setState((state) => {
+      const disc = state.discs[sourceTower][0];
+      if (state.discs[destTower][0] < disc) return state;
+
+      let discs = [...state.discs];
+      discs[sourceTower] = _.tail(discs[sourceTower]);
+      discs[destTower] = [disc, ...state.discs[destTower]];
+      return { discs };
+    });
   }
 
   render() {
@@ -85,8 +53,15 @@ class Towers extends React.Component {
 }
 
 const App = () => (
-  <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: window.innerHeight, width: '100%', backgroundColor: 'darkblue'}}>
-    <Towers discsNumber={7} />
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: window.innerHeight,
+    width: '100%',
+    backgroundColor: 'black'
+  }}>
+    <Towers discsNumber={3} />
   </div>
 );
 
