@@ -1,45 +1,25 @@
-**!! Atenção: Renomeie o seu repositório para (Tema)_(NomeDoProjeto). !!** 
+# D-C CountInversions
 
-Temas:
- - Grafos1
- - Grafos2
- - PD
- - D&C
- - Greed
- - Final 
- 
- **!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: Grafos2_Labirinto-do-Minotauro !!**
- 
- (Apague essa seção)
-
-# NomedoProjeto
-
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+**Número da Lista**: 4<br>
+**Conteúdo da Disciplina**: Dividir e Conquistar<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 16/0148375 |  Vitor Leal dos Santos |
+| 16/0119316  | Ezequiel de Oliveira dos Reis |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+O Projeto tem como objetivo realizar a contagem de inversoes em um array.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+[![count_inversions](./screenshot.png)](./screenshot.png)
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: Python<br>
+Após clonar o repositório, entrar na pasta do projeto e inserir os seguintes comandos:
+
+```python2 countInversions.py```
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
-
+Obs: É necessário utilizar o Python2 para o projeto rodar corretamente.
