@@ -1,10 +1,10 @@
-def TowerOfHanoi(n , from_rod, to_rod, aux_rod): 
+def TowerOfHanoi(n , fromT, toT, aux): 
     if n == 1: 
-        print("Move disk 1 from rod",from_rod,"to rod",to_rod )
+        print("Move disk 1 from tower",fromT,"to tower",toT )
         return
-    TowerOfHanoi(n-1, from_rod, aux_rod, to_rod) 
-    print("Move disk",n,"from rod",from_rod,"to rod",to_rod) 
-    TowerOfHanoi(n-1, aux_rod, to_rod, from_rod)
+    TowerOfHanoi(n-1, fromT, aux, toT) 
+    print("Move disk",n,"from tower",fromT,"to tower",toT) 
+    TowerOfHanoi(n-1, aux, toT, fromT)
      
 n = input("Number of disks in your hanoi tower: ")
 TowerOfHanoi(int(n), 'A', 'C', 'B')  
