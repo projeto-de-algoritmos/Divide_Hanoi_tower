@@ -13,7 +13,7 @@ const App = () => (
       width: '100%',
       backgroundColor: 'black'
     }}>
-      <Towers discsNumber={3} />
+      <Towers discsNumber={7} />
     </div>
     <div style={{
       display: 'flex',
@@ -23,7 +23,7 @@ const App = () => (
       width: '100%',
       backgroundColor: 'black'
     }}>
-      <Towers discsNumber={3} />
+      <Towers discsNumber={7} />
     </div>
   </>
 );
